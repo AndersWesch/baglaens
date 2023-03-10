@@ -23,6 +23,7 @@ return new class extends Migration
             ['name' => 'Azerbaijan', 'short' => 'AZE'],
             ['name' => 'Belarus', 'short' => 'BLR'],
             ['name' => 'Canada', 'short' => 'CAD'],
+            ['name' => 'Colombia', 'short' => 'COL'],
             ['name' => 'Denmark', 'short' => 'DNK'],
             ['name' => 'Great Britain', 'short' => 'GBR'],
             ['name' => 'Russia', 'short' => 'RUS'],

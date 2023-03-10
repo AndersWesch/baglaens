@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gender extends Model
+class EventType extends Model
 {
     use HasFactory;
 
-    const MALE = 'male';
-    const FEMALE = 'female';
+    const INTERNATIONAL = 'international';
+    const NATIONAL = 'national';
 
     /**
      * @var bool
@@ -25,5 +25,5 @@ class Gender extends Model
     /**
      * @var string
      */
-    protected $primaryKey = 'gender';
+    protected $primaryKey = 'type';
 }
