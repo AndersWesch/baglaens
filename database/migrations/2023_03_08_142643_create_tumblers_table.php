@@ -17,13 +17,12 @@ return new class extends Migration
             $table->string('last_name');
 
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('contries');
+            $table->foreign('country_id')->references('id')->on('countries');
 
-            $table->string('club')->nullable();
             $table->timestamp('birthday')->nullable();
 
             $table->string('gender', 16);
-            $table->foreign('gender')->references('type')->on('genders');
+            $table->foreign('gender')->references('gender')->on('genders');
 
             $table->string('instragram_link')->nullable();
             $table->string('sampler_link')->nullable();

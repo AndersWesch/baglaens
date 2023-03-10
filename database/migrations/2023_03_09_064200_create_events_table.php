@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\EventType;
+use Carbon\Carbon;
 
 return new class extends Migration
 {
@@ -27,6 +28,8 @@ return new class extends Migration
 
             $table->string('type', 16);
             $table->foreign('type')->references('type')->on('event_types');
+
+            $table->integer('junior')->default(0);
 
             $table->timestamps();
         });
@@ -54,7 +57,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Sofia')->first()->id,
                 'date' => '01-11-2022',
                 'track' => 'Skakun',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -62,7 +67,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Baku')->first()->id,
                 'date' => '01-11-2021',
                 'track' => 'Skakun',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -70,7 +77,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Tokyo')->first()->id,
                 'date' => '01-11-2019',
                 'track' => 'Spieth',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -78,7 +87,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'St. Petersburg')->first()->id,
                 'date' => '01-11-2018',
                 'track' => 'Acrosport',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -86,7 +97,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Sofia')->first()->id,
                 'date' => '01-11-2017',
                 'track' => 'Skakun',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -94,7 +107,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Odense')->first()->id,
                 'date' => '01-11-2015',
                 'track' => 'Skakun',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -102,7 +117,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Daytona')->first()->id,
                 'date' => '01-11-2014',
                 'track' => 'Acrosport',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -110,7 +127,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Sofia')->first()->id,
                 'date' => '01-11-2013',
                 'track' => 'Acrosport',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -118,7 +137,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Birmingham')->first()->id,
                 'date' => '01-11-2011',
                 'track' => 'Gymnova',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -126,7 +147,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Metz')->first()->id,
                 'date' => '01-11-2010',
                 'track' => 'Gymnova',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -134,7 +157,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'St. Petersburg')->first()->id,
                 'date' => '01-11-2009',
                 'track' => 'Acrosport',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -142,7 +167,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Quebec')->first()->id,
                 'date' => '01-11-2007',
                 'track' => 'Jansen & Fritzen',
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -150,7 +177,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Eindhoven')->first()->id,
                 'date' => '01-11-2005',
                 'track' => null,
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -158,7 +187,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Hanover')->first()->id,
                 'date' => '01-11-2003',
                 'track' => null,
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -166,7 +197,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Odense')->first()->id,
                 'date' => '01-11-2001',
                 'track' => null,
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'World Championship',
@@ -174,7 +207,9 @@ return new class extends Migration
                 'city_id' => DB::table('cities')->where('name', 'Sun City')->first()->id,
                 'date' => '01-11-1999',
                 'track' => null,
-                'type' => EventType::INTERNATIONAL
+                'type' => EventType::INTERNATIONAL,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         ]);
     }
