@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Gender;
 
 return new class extends Migration
 {
@@ -29,6 +30,19 @@ return new class extends Migration
 
             $table->timestamps();
         });
+
+        $denmarkId = DB::table('countries')->where('name', 'Denmark')->first()->id;
+        DB::table('tumblers')->insert([
+            [
+                'first_name' => 'Anders',
+                'last_name' => 'Wesch',
+                'country_id' => $denmarkId,
+                'birthday' => '11-10-1993',
+                'gender' => Gender::MALE,
+                'instragram_link' => 'https://www.instagram.com/anderswesch/',
+                'sampler_link' => 'https://www.youtube.com/watch?v=kYMpLQxjrNY'
+            ]
+        ]);
     }
 
     /**

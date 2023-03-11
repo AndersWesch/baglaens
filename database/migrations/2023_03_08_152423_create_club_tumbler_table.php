@@ -20,6 +20,9 @@ return new class extends Migration
             $table->unsignedBigInteger('tumbler_id');
             $table->foreign('tumbler_id')->references('id')->on('tumblers');
 
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
+
             $table->timestamps();
         });
     }
