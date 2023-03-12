@@ -30,6 +30,7 @@ return new class extends Migration
             ['name' => 'Svendborg', 'country_id' => $denmarkId],
             ['name' => 'Flemming', 'country_id' => $denmarkId],
             ['name' => 'Haslev', 'country_id' => $denmarkId],
+            ['name' => 'Varnæs Bovrup', 'country_id' => $denmarkId],
         ]);
 
         $bulgariaId = DB::table('countries')->where('name', 'Bulgaria')->first()->id;

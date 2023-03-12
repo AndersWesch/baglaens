@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TumblerController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\PassController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/dashboard', function () {
+    return view('home');
+});
+
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -28,6 +33,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('tumblers', [TumblerController::class, 'index'])->name('tumblers');
+Route::get('clubs', [ClubController::class, 'index'])->name('clubs');
 Route::get('events', [EventController::class, 'index'])->name('events');
 Route::get('passes', [PassController::class, 'index'])->name('passes');
 

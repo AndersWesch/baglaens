@@ -77,6 +77,22 @@ return new class extends Migration
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
+            [
+                'name' => 'Haslev Gymnastik Forening',
+                'short' => 'HGF',
+                'country_id' => $denmarkId,
+                'city_id' => DB::table('cities')->where('name', 'Haslev')->first()->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Varnæs Bovrup Idræts Forening',
+                'short' => 'VBIF',
+                'country_id' => $denmarkId,
+                'city_id' => DB::table('cities')->where('name', 'Varnæs Bovrup')->first()->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
         ]);
     }
 

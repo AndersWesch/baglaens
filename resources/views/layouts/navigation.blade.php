@@ -15,8 +15,11 @@
                     <x-nav-link :href="route('tumblers')" :active="request()->routeIs('tumblers')">
                         {{ __('Tumblers') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('clubs')" :active="request()->routeIs('clubs')">
+                        {{ __('Clubs') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('events')" :active="request()->routeIs('events')">
-                        {{ __('Event') }}
+                        {{ __('Events') }}
                     </x-nav-link>
                     <x-nav-link :href="route('passes')" :active="request()->routeIs('passes')">
                         {{ __('Passes') }}
@@ -80,6 +83,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('tumblers')" :active="request()->routeIs('tumblers')">
                 {{ __('Tumblers') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('clubs')" :active="request()->routeIs('clubs')">
+                {{ __('Clubs') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('events')" :active="request()->routeIs('events')">
                 {{ __('Events') }}
