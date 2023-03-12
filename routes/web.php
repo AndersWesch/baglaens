@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TumblerController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\PassController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,17 +18,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('home');
+})->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('tumblers', [TumblerController::class, 'index'])->name('tumblers');
+Route::get('events', [EventController::class, 'index'])->name('events');
+Route::get('passes', [PassController::class, 'index'])->name('passes');
 
 require __DIR__.'/auth.php';
