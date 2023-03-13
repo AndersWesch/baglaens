@@ -36,6 +36,7 @@ return new class extends Migration
         $bulgariaId = DB::table('countries')->where('name', 'Bulgaria')->first()->id;
         DB::table('cities')->insert([
             ['name' => 'Sofia', 'country_id' => $bulgariaId],
+            ['name' => 'Varna', 'country_id' => $bulgariaId],
         ]);
 
         $azerbaijanId = DB::table('countries')->where('name', 'Azerbaijan')->first()->id;
@@ -51,6 +52,7 @@ return new class extends Migration
         $russiaId = DB::table('countries')->where('name', 'Russia')->first()->id;
         DB::table('cities')->insert([
             ['name' => 'St. Petersburg', 'country_id' => $russiaId],
+            ['name' => 'Sochi', 'country_id' => $russiaId],
         ]);
 
         $unitedId = DB::table('countries')->where('name', 'United States')->first()->id;
@@ -86,6 +88,16 @@ return new class extends Migration
         $southAfricaId = DB::table('countries')->where('name', 'South Africa')->first()->id;
         DB::table('cities')->insert([
             ['name' => 'Sun City', 'country_id' => $southAfricaId],
+        ]);
+
+        $spainId = DB::table('countries')->where('name', 'Spain')->first()->id;
+        DB::table('cities')->insert([
+            ['name' => 'Valladolid', 'country_id' => $spainId],
+        ]);
+
+        $portugalId = DB::table('countries')->where('name', 'Portugal')->first()->id;
+        DB::table('cities')->insert([
+            ['name' => 'Guimaraes', 'country_id' => $portugalId],
         ]);
     }
 

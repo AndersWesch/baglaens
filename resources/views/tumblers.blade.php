@@ -15,10 +15,11 @@
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
                                     Name
                                 </th>
-                                <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">    Country
+                                <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                                    Country
                                 </th>
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
-                                    Age
+                                    Year
                                 </th>
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">    Gender
                                 </th>
@@ -34,7 +35,7 @@
                                         {{ $tumbler->country->name }}
                                     </td>
                                     <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
-                                        {{ $tumbler->birthday }}
+                                        {{ $tumbler->year }}
                                     </td>
                                     <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
                                         {{ $tumbler->gender }}
@@ -43,7 +44,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@ class ClubController extends Controller
     public function index(): View
     {
         return view('clubs', [
-            'clubs' => Club::all()
+            'clubs' => Club::with(['city', 'country'])->get()
         ]);
     }
 }

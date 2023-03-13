@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Carbon\Carbon;
 
 class Tumbler extends Model
 {
@@ -16,6 +17,15 @@ class Tumbler extends Model
     public function getNameAttribute(): string
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    /**
+     * Get the year of the tumblers birthday
+     */
+    public function getYearAttribute(): int
+    {
+        $date = new Carbon($this->birthday);
+        return $date->format('Y');
     }
 
     /**
