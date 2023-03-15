@@ -49,25 +49,16 @@ return new class extends Migration
         });
 
         $denmarkId = DB::table('countries')->where('name', 'Denmark')->first()->id;
-        DB::table('tumblers')->insert([
-            [
-                'first_name' => 'Anders',
-                'last_name' => 'Wesch',
-                'country_id' => $denmarkId,
-                'birthday' => '11-10-1993',
-                'gender' => Gender::MALE,
-                'instragram_link' => 'https://www.instagram.com/anderswesch/',
-                'sampler_link' => 'https://www.youtube.com/watch?v=kYMpLQxjrNY'
-            ]
-        ]);
 
         foreach ($this->getTumblers() as $tumbler) {
             $tumblerId = DB::table('tumblers')->insertGetId([
                 'first_name' => $tumbler['first_name'],
                 'last_name' => $tumbler['last_name'],
                 'country_id' => $denmarkId,
-                'birthday' => $tumbler['birtday'],
+                'birthday' => Carbon::createFromFormat('d-m-Y',  $tumbler['birthday']),
                 'gender' => strtolower($tumbler['gender']),
+                'instragram_link' => $tumbler['instragram_link'] ?? null,
+                'sampler_link' => $tumbler['sampler_link'] ?? null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
@@ -104,11 +95,21 @@ return new class extends Migration
     {
         return [
             [
+                'first_name' => 'Anders',
+                'last_name' => 'Wesch',
+                'country' => 'Denmark',
+                'club' => 'VGF89/OGF',
+                'birthday' => '11-10-1993',
+                'gender' => 'Male',
+                'instragram_link' => 'https://www.instagram.com/anderswesch/',
+                'sampler_link' => 'https://www.youtube.com/watch?v=kYMpLQxjrNY'
+            ],
+            [
                 'first_name' => 'Adam',
                 'last_name' => 'Scharf Matthiesen',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '18-11-1996',
+                'birthday' => '18-11-1996',
                 'gender' => 'Male'
             ],
             [
@@ -116,7 +117,7 @@ return new class extends Migration
                 'last_name' => 'Pihl',
                 'country' => 'Danmark',
                 'club' => 'OGF/VGF89',
-                'birtday' => '01-01-1989',
+                'birthday' => '01-01-1989',
                 'gender' => 'Male'
             ],
             [
@@ -124,7 +125,7 @@ return new class extends Migration
                 'last_name' => 'Abildgaard',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-2002',
+                'birthday' => '01-01-2002',
                 'gender' => 'Male'
             ],
             [
@@ -132,7 +133,7 @@ return new class extends Migration
                 'last_name' => 'Sømod',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1998',
+                'birthday' => '01-01-1998',
                 'gender' => 'Male'
             ],
             [
@@ -140,7 +141,7 @@ return new class extends Migration
                 'last_name' => 'Mikkelsen',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-2005',
+                'birthday' => '01-01-2005',
                 'gender' => 'Male'
             ],
             [
@@ -148,7 +149,7 @@ return new class extends Migration
                 'last_name' => 'Hansen',
                 'country' => 'Danmark',
                 'club' => 'OGF/SPD',
-                'birtday' => '01-01-2003',
+                'birthday' => '01-01-2003',
                 'gender' => 'Male'
             ],
             [
@@ -156,7 +157,7 @@ return new class extends Migration
                 'last_name' => 'Steffensen',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-1999',
+                'birthday' => '01-01-1999',
                 'gender' => 'Male'
             ],
             [
@@ -164,7 +165,7 @@ return new class extends Migration
                 'last_name' => 'Lindholmer',
                 'country' => 'Danmark',
                 'club' => 'SG/OGF',
-                'birtday' => '01-01-2003',
+                'birthday' => '01-01-2003',
                 'gender' => 'Male'
             ],
             [
@@ -172,7 +173,7 @@ return new class extends Migration
                 'last_name' => 'Beck',
                 'country' => 'Danmark',
                 'club' => 'VGF89/OGF',
-                'birtday' => '01-01-1998',
+                'birthday' => '01-01-1998',
                 'gender' => 'Male'
             ],
             [
@@ -180,7 +181,7 @@ return new class extends Migration
                 'last_name' => 'Erbs',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1999',
+                'birthday' => '01-01-1999',
                 'gender' => 'Male'
             ],
             [
@@ -188,7 +189,7 @@ return new class extends Migration
                 'last_name' => 'Green',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '01-01-1998',
+                'birthday' => '01-01-1998',
                 'gender' => 'Male'
             ],
             [
@@ -196,7 +197,7 @@ return new class extends Migration
                 'last_name' => 'Gaarde',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-1996',
+                'birthday' => '01-01-1996',
                 'gender' => 'Male'
             ],
             [
@@ -204,7 +205,7 @@ return new class extends Migration
                 'last_name' => 'Eskesen',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1995',
+                'birthday' => '01-01-1995',
                 'gender' => 'Male'
             ],
             [
@@ -212,7 +213,7 @@ return new class extends Migration
                 'last_name' => 'Hulgaard',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1990',
+                'birthday' => '01-01-1990',
                 'gender' => 'Male'
             ],
             [
@@ -220,7 +221,7 @@ return new class extends Migration
                 'last_name' => 'Termansen',
                 'country' => 'Danmark',
                 'club' => 'GUB',
-                'birtday' => '01-01-1996',
+                'birthday' => '01-01-1996',
                 'gender' => 'Male'
             ],
             [
@@ -228,7 +229,7 @@ return new class extends Migration
                 'last_name' => 'Hvidemose',
                 'country' => 'Danmark',
                 'club' => 'HGF/OGF',
-                'birtday' => '01-01-1995',
+                'birthday' => '01-01-1995',
                 'gender' => 'Male'
             ],
             [
@@ -236,7 +237,7 @@ return new class extends Migration
                 'last_name' => 'Nissen',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '01-01-1992',
+                'birthday' => '01-01-1992',
                 'gender' => 'Male'
             ],
             [
@@ -244,7 +245,7 @@ return new class extends Migration
                 'last_name' => 'Ulrich Rasmussen',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '01-01-1991',
+                'birthday' => '01-01-1991',
                 'gender' => 'Male'
             ],
             [
@@ -252,7 +253,7 @@ return new class extends Migration
                 'last_name' => 'Snogdal',
                 'country' => 'Danmark',
                 'club' => 'SG/OGF',
-                'birtday' => '01-01-1989',
+                'birthday' => '01-01-1989',
                 'gender' => 'Male'
             ],
             [
@@ -260,7 +261,7 @@ return new class extends Migration
                 'last_name' => 'Jensen',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1989',
+                'birthday' => '01-01-1989',
                 'gender' => 'Male'
             ],
             [
@@ -268,7 +269,7 @@ return new class extends Migration
                 'last_name' => 'Green',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '01-01-1987',
+                'birthday' => '01-01-1987',
                 'gender' => 'Male'
             ],
             [
@@ -276,7 +277,7 @@ return new class extends Migration
                 'last_name' => 'Rye',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '01-01-1989',
+                'birthday' => '01-01-1989',
                 'gender' => 'Male'
             ],
             [
@@ -284,7 +285,7 @@ return new class extends Migration
                 'last_name' => 'Andreasen',
                 'country' => 'Danmark',
                 'club' => '',
-                'birtday' => '01-01-1986',
+                'birthday' => '01-01-1986',
                 'gender' => 'Male'
             ],
             [
@@ -292,7 +293,7 @@ return new class extends Migration
                 'last_name' => 'Post',
                 'country' => 'Danmark',
                 'club' => 'VBIF/OGF',
-                'birtday' => '01-01-2004',
+                'birthday' => '01-01-2004',
                 'gender' => 'Male'
             ],
             [
@@ -300,7 +301,7 @@ return new class extends Migration
                 'last_name' => 'Boesdal',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '01-01-2004',
+                'birthday' => '01-01-2004',
                 'gender' => 'Male'
             ],
             [
@@ -308,7 +309,7 @@ return new class extends Migration
                 'last_name' => 'Sømod',
                 'country' => 'Danmark',
                 'club' => 'SG/OGF',
-                'birtday' => '01-01-2003',
+                'birthday' => '01-01-2003',
                 'gender' => 'Male'
             ],
             [
@@ -316,7 +317,7 @@ return new class extends Migration
                 'last_name' => 'Bredvig',
                 'country' => 'Danmark',
                 'club' => 'GUB/OGF/SPD',
-                'birtday' => '01-01-2000',
+                'birthday' => '01-01-2000',
                 'gender' => 'Male'
             ],
             [
@@ -324,7 +325,7 @@ return new class extends Migration
                 'last_name' => 'Scherrebeck',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-1999',
+                'birthday' => '01-01-1999',
                 'gender' => 'Male'
             ],
             [
@@ -332,7 +333,7 @@ return new class extends Migration
                 'last_name' => 'Krüger',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-1997',
+                'birthday' => '01-01-1997',
                 'gender' => 'Male'
             ],
             [
@@ -340,7 +341,7 @@ return new class extends Migration
                 'last_name' => 'Sørensen',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1997',
+                'birthday' => '01-01-1997',
                 'gender' => 'Male'
             ],
             [
@@ -348,7 +349,7 @@ return new class extends Migration
                 'last_name' => 'Tvedebrink',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1997',
+                'birthday' => '01-01-1997',
                 'gender' => 'Male'
             ],
             [
@@ -356,7 +357,7 @@ return new class extends Migration
                 'last_name' => 'Klostergaard',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1996',
+                'birthday' => '01-01-1996',
                 'gender' => 'Male'
             ],
             [
@@ -364,7 +365,7 @@ return new class extends Migration
                 'last_name' => 'Søgård',
                 'country' => 'Danmark',
                 'club' => 'GUB',
-                'birtday' => '01-01-1994',
+                'birthday' => '01-01-1994',
                 'gender' => 'Male'
             ],
             [
@@ -372,7 +373,7 @@ return new class extends Migration
                 'last_name' => 'Nash',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '01-01-1991',
+                'birthday' => '01-01-1991',
                 'gender' => 'Male'
             ],
             [
@@ -380,7 +381,7 @@ return new class extends Migration
                 'last_name' => 'Møller',
                 'country' => 'Danmark',
                 'club' => 'SG',
-                'birtday' => '01-01-1993',
+                'birthday' => '01-01-1993',
                 'gender' => 'Male'
             ],
             [
@@ -388,7 +389,7 @@ return new class extends Migration
                 'last_name' => 'Bækhøj',
                 'country' => 'Danmark',
                 'club' => 'GUB/SPD',
-                'birtday' => '01-01-2005',
+                'birthday' => '01-01-2005',
                 'gender' => 'Male'
             ],
             [
@@ -396,7 +397,7 @@ return new class extends Migration
                 'last_name' => 'Jørgensen',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-2005',
+                'birthday' => '01-01-2005',
                 'gender' => 'Male'
             ],
             [
@@ -404,7 +405,7 @@ return new class extends Migration
                 'last_name' => 'Krejberg',
                 'country' => 'Danmark',
                 'club' => 'SPD',
-                'birtday' => '01-01-2005',
+                'birthday' => '01-01-2005',
                 'gender' => 'Male'
             ],
             [
@@ -412,7 +413,7 @@ return new class extends Migration
                 'last_name' => 'Nørby',
                 'country' => 'Danmark',
                 'club' => 'SG/OGF',
-                'birtday' => '01-01-1992',
+                'birthday' => '01-01-1992',
                 'gender' => 'Female'
             ],
             [
@@ -420,7 +421,7 @@ return new class extends Migration
                 'last_name' => 'Ørskov',
                 'country' => 'Danmark',
                 'club' => 'GUB',
-                'birtday' => '01-01-1998',
+                'birthday' => '01-01-1998',
                 'gender' => 'Female'
             ],
             [
@@ -428,7 +429,7 @@ return new class extends Migration
                 'last_name' => 'Thomsen',
                 'country' => 'Danmark',
                 'club' => 'GUB',
-                'birtday' => '01-01-2003',
+                'birthday' => '01-01-2003',
                 'gender' => 'Female'
             ],
             [
@@ -436,7 +437,7 @@ return new class extends Migration
                 'last_name' => 'La Cour',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-1999',
+                'birthday' => '01-01-1999',
                 'gender' => 'Female'
             ],
             [
@@ -444,7 +445,7 @@ return new class extends Migration
                 'last_name' => 'Pagård',
                 'country' => 'Danmark',
                 'club' => 'GUB/OGF',
-                'birtday' => '01-01-1997',
+                'birthday' => '01-01-1997',
                 'gender' => 'Female'
             ],
             [
@@ -452,7 +453,7 @@ return new class extends Migration
                 'last_name' => 'Møller',
                 'country' => 'Danmark',
                 'club' => 'SG/OGF',
-                'birtday' => '01-01-1999',
+                'birthday' => '01-01-1999',
                 'gender' => 'Female'
             ],
             [
@@ -460,7 +461,7 @@ return new class extends Migration
                 'last_name' => 'Okkerstrøm',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '08-06-1997',
+                'birthday' => '08-06-1997',
                 'gender' => 'Female'
             ],
             [
@@ -468,7 +469,7 @@ return new class extends Migration
                 'last_name' => 'Juhl',
                 'country' => 'Danmark',
                 'club' => 'VGF89',
-                'birtday' => '21-07-1997',
+                'birthday' => '21-07-1997',
                 'gender' => 'Female'
             ],
             [
@@ -476,7 +477,7 @@ return new class extends Migration
                 'last_name' => 'Scherrebeck',
                 'country' => 'Danmark',
                 'club' => 'FEG/SPD',
-                'birtday' => '01-01-2003',
+                'birthday' => '01-01-2003',
                 'gender' => 'Female'
             ],
             [
@@ -484,7 +485,7 @@ return new class extends Migration
                 'last_name' => 'Jensen',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-2004',
+                'birthday' => '01-01-2004',
                 'gender' => 'Female'
             ],
             [
@@ -492,7 +493,7 @@ return new class extends Migration
                 'last_name' => 'Madsen',
                 'country' => 'Danmark',
                 'club' => 'OGF',
-                'birtday' => '01-01-2006',
+                'birthday' => '01-01-2006',
                 'gender' => 'Female'
             ],
             [
@@ -500,7 +501,7 @@ return new class extends Migration
                 'last_name' => 'Thomsen',
                 'country' => 'Danmark',
                 'club' => 'GUB',
-                'birtday' => '01-01-2006',
+                'birthday' => '01-01-2006',
                 'gender' => 'Female'
             ]
         ];

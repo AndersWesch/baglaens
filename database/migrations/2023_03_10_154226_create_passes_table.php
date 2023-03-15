@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('competition_id')->references('id')->on('competitions');
 
             $table->string('pass');
+            $table->tinyInteger('pass_order')->default(1)->comment('the order of the passes either 1 or 2');
 
             $table->double('execution')->nullable();
             $table->double('difficulty')->nullable();
@@ -30,6 +31,32 @@ return new class extends Migration
 
             $table->timestamps();
         });
+
+        $andersWesch = 1;
+        $worlds17final = 19;
+
+        DB::table('passes')->insert([
+            [
+                'tumbler_id' => $andersWesch,
+                'competition_id' => $worlds17final,
+                'pass' => '( F 22/ ^ ^ ^ F 44/',
+                'pass_order' => 1,
+                'execution' => 8.9,
+                'difficulty' => 10.9,
+                'total_score' => 39.9,
+                'video_url' => '/'
+            ],
+            [
+                'tumbler_id' => $andersWesch,
+                'competition_id' => $worlds17final,
+                'pass' => '( 22/ ^ F --/ ^ F ---o',
+                'pass_order' => 2,
+                'execution' => 8.9,
+                'difficulty' => 10.9,
+                'total_score' => 39.9,
+                'video_url' => '/'
+            ]
+        ]);
     }
 
     /**

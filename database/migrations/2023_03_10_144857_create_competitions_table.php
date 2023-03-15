@@ -42,33 +42,33 @@ return new class extends Migration
 
     private function seedWorldChampionships(): void
     {
-        $worlds = DB::table('events')->where('name', 'World Championship')->get();
+        $worlds = DB::table('events')->get();
         foreach ($worlds as $event) {
             DB::table('competitions')->insert([
                 [
                     'event_id' => $event->id,
-                    'name' => 'Mens Prelims',
+                    'name' => 'Prelims',
                     'gender' => Gender::MALE,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],
                 [
                     'event_id' => $event->id,
-                    'name' => 'Mens Final',
-                    'gender' => Gender::MALE,
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
-                ],
-                [
-                    'event_id' => $event->id,
-                    'name' => 'Womens Prelims',
+                    'name' => 'Prelims',
                     'gender' => Gender::FEMALE,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],
                 [
                     'event_id' => $event->id,
-                    'name' => 'Womens Final',
+                    'name' => 'Final',
+                    'gender' => Gender::MALE,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ],
+                [
+                    'event_id' => $event->id,
+                    'name' => 'Final',
                     'gender' => Gender::FEMALE,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()

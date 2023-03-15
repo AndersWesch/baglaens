@@ -17,5 +17,15 @@ class EventController extends Controller
             'events' => Event::with(['city', 'country'])->orderBy('date', 'DESC')->get()
         ]);
     }
+
+    /**
+     * Show a specific event
+     */
+    public function show(Event $event): View
+    {
+        return view('event', [
+            'event' => $event
+        ]);
+    }
 }
 

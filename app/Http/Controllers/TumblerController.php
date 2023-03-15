@@ -17,4 +17,14 @@ class TumblerController extends Controller
             'tumblers' => Tumbler::orderBy('first_name')->get()
         ]);
     }
+
+    /**
+     * Show a specific tumbler
+     */
+    public function show(Tumbler $tumbler): View
+    {
+        return view('tumbler', [
+            'tumbler' => $tumbler
+        ]);
+    }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Events') }}
+            {{ $competition->name }}
         </h2>
     </x-slot>
 
@@ -13,41 +13,55 @@
                         <thead>
                             <tr>
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
-                                    Name
+                                    Tumbler
                                 </th>
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
-                                    City
+                                    Pass order
                                 </th>
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
-                                    Country
+                                    Pass
                                 </th>
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
-                                    Track
+                                    Execution
                                 </th>
                                 <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
-                                    Year
+                                    Difficulty
+                                </th>
+                                <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                                    Total Score
+                                </th>
+                                <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+                                    Video
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)
+                            @foreach ($competition->passes as $pass)
                                 <tr>
                                     <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
-                                        <a href="{{ route('event', $event) }}">
-                                            {{ $event->name }}
-                                        </a>
+                                        {{ $pass->tumbler->name }}
                                     </td>
                                     <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
-                                        {{ $event->city->name }}
+                                        {{ $pass->pass_order }}
                                     </td>
                                     <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
-                                        {{ $event->country->name }}
+                                        {{ $pass->pass }}
                                     </td>
                                     <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
-                                        {{ $event->track }}
+                                        {{ $pass->execution }}
                                     </td>
                                     <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
-                                        {{ $event->year }}
+                                        {{ $pass->difficulty }}
+                                    </td>
+                                    <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                                        {{ $pass->total_score }}
+                                    </td>
+                                    <td class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+                                        @if ($pass->video_url)
+                                            <a href="{{ $pass->video_url }}">
+                                                Video
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

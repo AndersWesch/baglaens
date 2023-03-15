@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\ClubController;
+use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\PassController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TumblerController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\ClubController;
-use App\Http\Controllers\PassController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +33,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('tumblers', [TumblerController::class, 'index'])->name('tumblers');
 Route::get('clubs', [ClubController::class, 'index'])->name('clubs');
+Route::get('clubs/{club}', [ClubController::class, 'show'])->name('club');
+
+Route::get('competitions/{competition}', [CompetitionController::class, 'show'])->name('competition');
+
 Route::get('events', [EventController::class, 'index'])->name('events');
+Route::get('events/{event}', [EventController::class, 'show'])->name('event');
+
 Route::get('passes', [PassController::class, 'index'])->name('passes');
+
+Route::get('tumblers', [TumblerController::class, 'index'])->name('tumblers');
+Route::get('tumblers/{tumbler}', [TumblerController::class, 'show'])->name('tumbler');
 
 require __DIR__.'/auth.php';

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\City;
 use App\Models\Country;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Club extends Model
 {
@@ -26,5 +27,13 @@ class Club extends Model
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
+    }
+
+    /**
+     * The tumblers of a club
+     */
+    public function tumblers(): BelongsToMany
+    {
+        return $this->belongsToMany(Tumbler::class);
     }
 }
