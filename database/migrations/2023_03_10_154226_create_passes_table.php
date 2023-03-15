@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('pass');
             $table->tinyInteger('pass_order')->default(1)->comment('the order of the passes either 1 or 2');
 
+            $table->integer('place')->nullable();
+
             $table->double('execution')->nullable();
             $table->double('difficulty')->nullable();
             $table->double('total_score')->nullable();
@@ -41,6 +43,7 @@ return new class extends Migration
                 'competition_id' => $worlds17final,
                 'pass' => '( F 22/ ^ ^ ^ F 44/',
                 'pass_order' => 1,
+                'place' => 2,
                 'execution' => 8.9,
                 'difficulty' => 10.9,
                 'total_score' => 39.9,
@@ -51,6 +54,7 @@ return new class extends Migration
                 'competition_id' => $worlds17final,
                 'pass' => '( 22/ ^ F --/ ^ F ---o',
                 'pass_order' => 2,
+                'place' => 2,
                 'execution' => 8.9,
                 'difficulty' => 10.9,
                 'total_score' => 39.9,
