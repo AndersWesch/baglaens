@@ -64,7 +64,10 @@
                     <p class="uppercase mb-4 font-semibold text-gray-800">Events</p>
 
                     @foreach ($tumbler->competitions as $competition)
-                        {{ $competition->event->name }} - {{ $competition->name }} <br>
+                        <a href="{{ route('event', $competition->event) }}">
+                            {{ $competition->event->name }} - {{ $competition->name }}
+                        </a> <br>
+
                     @endforeach
                 </div>
             </div>
